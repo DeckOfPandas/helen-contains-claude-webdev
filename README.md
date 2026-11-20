@@ -92,7 +92,7 @@ Handy hint: **to pin the Claude Code version**, `PIN_CLAUDE_CODE=2.1.0 bash .dev
 - **A hook change takes effect from the checkout the session started in**, usually `main`. A branch that fixes a guard is still guarded by the old one until it's merged and pulled.
 - **Pushing `.github/workflows/`** needs the `workflow` scope.
 - **A Pages workflow publishes nothing** until Settings → Pages → Source is GitHub Actions.
-- **The firewall resolves hosts once.** If a CDN rotates, `sudo /usr/local/bin/init-firewall.sh` re-resolves.
+- **The firewall allows GitHub by its published ranges** (`api.github.com/meta`) and resolves every other host once. If another host's CDN rotates, `sudo /usr/local/bin/init-firewall.sh` re-resolves; it is safe to re-run while the firewall is live.
 - **Upstream base-image and apt changes don't trigger a rebuild.** Use `--rebuild`.
 - **To try a branch's container changes**, run its worktree's `run.sh` from the host.
 - **`.devcontainer/kit.local.env`** (gitignored) can override `PROJECT_NAME` and `PORTS` for one machine. Mostly for the kit's own checkout; a project should commit both.
